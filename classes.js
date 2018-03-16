@@ -116,11 +116,11 @@ class ProgressiveManager {
     this.reports.push(employee);
     if(this.reports.length <= 3) {
       this.title = 'Barely Manager';
-    } else if(this.reports.length >= 4) {
+    } else if(this.reports.length <= 10) {
       this.title = 'Mostly Manager';
-    } else if(this.reports.length >= 11) {
+    } else if(this.reports.length <= 50) {
       this.title = 'Manager';
-    } else if(this.reports.length >= 51) {
+    } else if(this.reports.length <= 100) {
       this.title = 'Manager Plus';
     } else if(this.reports.length >= 101) {
       this.title = 'Bestest Manager'
@@ -159,23 +159,22 @@ class ProgressiveManager {
 //Code Here
 class Machine {
   constructor() {
-    this.widget_made_count = 0;
+    this.widgets_made_count = 0;
     this.wear_and_tear_count = 0;
     this.needs_reboot = false;
   }
   makeWidgets(num) {
     this.widgets_made_count += num;
-    this.wear_and_tear_count = num * 50;
+    this.wear_and_tear_count += (num/50) * 1;
   }
   fixMachine() {
     this.needs_reboot = true; 
    }
     reboot() {
-      function() {
-        this.needs_reboot = false;
-        this.wear_and_count += 10;
-        
-      }
+      return () => {
+            this.needs_reboot = false;
+            this.wear_and_tear_count -= 10;
+          }
     }
 }
 

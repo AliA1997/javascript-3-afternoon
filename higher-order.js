@@ -64,7 +64,7 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 */
 
 //Code Here
-let totalPopulation = populations.reduce((tot, pop) => tot += pop )
+let totalPopulation = populations.reduce((tot, pop) => tot += pop, 0)
 
 
 
@@ -106,11 +106,7 @@ const orders = [{"price":15,"tax":0.09},{"price":42,"tax":0.07},{"price":56,"tax
 /*
   Use a higher order method to get the sum of all the order totals after adding in the sales tax
 */
-
-let ordersTotal = orders.reduce((total, order) => {
-   order[price] += order[price] * order[tax];
-   return total += order[price];
-})//Code Here
+let ordersTotal = orders.map(order => order.price + (order.price * order.tax))
 
 
 
@@ -129,12 +125,12 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
 /*
   Use a high order method to create to get the sum of bobsTotal.
 */
-
-let bobsTotal = purchases.reduce((total, purchase) => {
-  if(purchase.owner === 'Bob') {
-    total += purchase.price
-  }
-  return total
-}) //Code Here
-
-
+//Make sure to set a initial value to the total.
+  let bobsTotal = purchases.reduce((total, purchase) => {
+    if(purchase.owner === 'Bob') {
+    return total += purchase.price
+    } else {
+    return total
+    }
+  }, 0) //Code Here
+  console.log(bobsTotal);

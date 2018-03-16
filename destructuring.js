@@ -93,7 +93,13 @@ function ingredients({carb, fat, protein}){
 
 //Code Here
 function largeNumbers({first, second, third}) {
-  Math.max(first, second, third);
+  if(first < second && first < third) {
+    return first;
+  } else if(second < first && second < third) {
+    return second;
+  } else if(third < second && third < first) {
+    return third;
+  }
 }
 
 
@@ -108,5 +114,11 @@ function largeNumbers({first, second, third}) {
 //Code Here
 
 function numberGroups({a, b, c}) {
-  Math.max(a.length, b.length, c.length)
+  if(a.length > b.length && a.length > c.length) {
+    return a;
+  } else if(b.length > c.length && b.length > a.length) {
+    return b;
+  } else if(c.length > b.length && c.length > a.length) {
+    return c;
+  }
 }

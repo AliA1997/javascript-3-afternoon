@@ -59,12 +59,13 @@ function showValues( obj ) {
 */
 
 //Code Here
-functionn greaterThan10(obj) {
+function greaterThan10(obj) {
   for(var key in obj) {
-    if(obj[key] < 10) {
-      obj[key] = 10;
+    if(obj[key] > 10) {
+      obj[key] = 0;
     }
   }
+  return obj;
 }
 
 
@@ -99,7 +100,8 @@ function double(obj) {
 function secrets(obj) {
   let str = '';
   for(var key in obj) {
-    if(obj[key].substring(0, 2).contains('sh')) {
+    let result = (key[0] + key[1])
+    if(result === 'sh') {
       str += obj[key];
     }
   }
@@ -158,7 +160,7 @@ var deleteTheBigNumbers = {
 
 //Code Here
 for(var key in deleteTheBigNumbers) {
-  delete deleteTheBigNumbers[key] > 100
+  (deleteTheBigNumbers[key] > 100 ? delete deleteTheBigNumbers[key] : deleteTheBigNumbers[key])
 }
 
 
@@ -174,9 +176,9 @@ for(var key in deleteTheBigNumbers) {
 //Code Here
 function startsWithK(obj) {
   for(var key in obj) {
-    obj[key][0] === 'k' ? delete obj[key]
+    key[0] === 'k' ? delete obj[key] : obj[key]
   }
-    return obj'
+  return obj;
 }
 
 
@@ -194,9 +196,10 @@ function startsWithK(obj) {
 //Code Here
 function hiddenTreasure(obj) {
     for(var key in obj) {
-      if(!obj[key].includes('treasure') {
+      if(!obj[key].includes('treasure')) {
         delete obj[key];
       }
     }
+    return obj;
   }
 

@@ -51,13 +51,13 @@ var employees = [
 */
 
 //Code Here
-function employeeUpdate() {
-  employees.filter((e, i, arr) => {
-    if(e.firstName === 'Theo') {
-      arr.splice(i, 1);
+function employeeUpdater() {
+  for(var i = 0; i < employees.length; i++) {
+    if (employees[i].firstName ==='Theo') {
+      employees.splice(i, 1);
     } 
-    if(e.firstName === 'Lorie') {
-      e.department = 'HR';
+    if(employees[i].firstName === 'Lorie') {
+      employees[i].department = 'HR'
     }
   }
   return employees;
@@ -79,15 +79,19 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 */
 
 //Code Here
-function removeDuplicated() {
+function removeDuplicates() {
+  let newWorkplaceAccidents = workplaceAccidents.sort();
   for(var i = 0; i < workplaceAccidents.length; i++) {
       for(var j = i + 1; j < workplaceAccidents.length; j++) {
-        if(workplaceAccidents[i] === workplace[Accidents[j]) {
-          workplaceAccidents.splice(j, 1);
+        if(newWorkplaceAccidents[i] === newWorkplaceAccidents[j] 
+          || newWorkplaceAccidents[j] === newWorkplaceAccidents[j + 1]) {
+          newWorkplaceAccidents.splice(j, 1);
+        } else if(newWorkplaceAccidents[i] === newWorkplaceAccidents[j + 1]) {
+          newWorkplaceAccidents.splice(i, 1);
         }
       }
     }   
-    return workplaceAccidents;  
+    return newWorkplaceAccidents;  
 }
 
 
@@ -187,10 +191,11 @@ function looper() {
     for(var j = 0; j < numsArr[i].length; j++) {
       if(numsArr[i][j] % 2 === 0) {
         numsArr[i][j] = 'even';
-      } else {
-        numsArr[i][j] = 'odd'
+      } else if(numsArr[i][j] % 2 === 1) {
+        numsArr[i][j] = 'odd';
       }
     }
   }
+  return numsArr;
 }
 
